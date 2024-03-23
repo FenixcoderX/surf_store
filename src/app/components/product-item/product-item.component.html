@@ -1,0 +1,19 @@
+
+<div class = "product-container"> 
+  <img routerLink="product/{{ product.id }}" class = "product-image" src="{{ product.imageUrl }}" alt="{{ product.name }}">
+  <p id="product-name">{{ product.name }}</p>
+  <p id="product-price">${{ product.price }}</p>
+  <div class="select-container">
+    <button type="button" class="btn btn-link" (click)="amountDown(product)">➖</button>
+    <input  type="number" class="select-input" required min="1" #productAmount="ngModel" [(ngModel)]="product.amount">
+    <button type="button" class="btn btn-link" (click)="amountUp(product)">➕</button>
+  </div>
+  <div class="amountError" *ngIf="productAmount.errors?.['min']; else elseBlock">
+    Please enter amount more than 0
+  </div>
+  <ng-template  #elseBlock> <br> </ng-template>
+  
+
+  <button class="btn btn-dark" (click)="addToCart(product)">Add to Cart</button>
+  <div id="notification" class="hidden">Added to cart</div>
+</div>

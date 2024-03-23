@@ -1,0 +1,136 @@
+.cart-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100vw;
+  /* border: 3px solid red; */
+}
+
+.cart-panel {
+  width: 300px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  /* border: 3px solid rgb(21, 0, 255); */
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  /* border: 3px solid rgb(255, 157, 0); */
+}
+
+.cart-item img {
+  /* border: 3px solid red; */
+  object-fit: cover;
+  width: 140px;
+}
+  
+.cart-item-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  margin-left: 10px;
+  line-height: 0.5em;
+  /* border: 3px solid rgb(255, 0, 242); */
+}
+
+#product-name {
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+#product-price {
+  font-size: 0.6em;
+}
+
+#amount {
+  font-size: 0.6em;
+  font-weight: 300;
+}
+  
+.number-input {
+  font-size: 0.7em;
+  width: 60px;
+  text-align: center;
+}
+
+.cart-item-details button {
+  line-height: 1em;
+  padding: 0px 4px 0px 4px;
+  background-color: #fff;
+  border: 0;
+  width: 50px;
+  align-items: center;
+}
+
+.cart-item-details button:hover {
+  background-color: rgb(209, 209, 209);
+}
+
+#total {
+  font-weight: 300;
+}
+
+form {
+  width: 300px;
+  font-size: 0.7em;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  /* border: 3px solid rgb(137, 238, 130); */
+}
+
+form input {
+  padding: 10px;
+  margin-top: 10px;
+}
+
+form p {
+  font-size: 0.75em;
+}
+  
+form button:hover {
+  background-color: #000;
+  color:palevioletred
+}
+  
+.empty-cart-message {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+  margin-right: 64px;
+}
+
+.inputError {
+  color:red;
+  font-size: 0.7em;
+  text-wrap: nowrap;
+}
+
+#notification {
+  background-color: palevioletred;
+  color: #000;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  /* z-index: 1; */
+  border-radius: 7px;
+  display: none;
+  font-size: 0.6em;
+}
+
+.hidden {
+  display: none;
+}

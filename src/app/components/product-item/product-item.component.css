@@ -1,0 +1,91 @@
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items:flex-start;
+  width: 99%;
+}
+
+.product-container button:hover {
+  background-color: #000;
+  color:palevioletred
+}
+
+.product-image {      
+  list-style-type: none;
+  width: 100%;
+  margin-bottom: 15px;
+  object-fit: cover;
+} 
+
+.product-image:hover {      
+  cursor: pointer;
+} 
+
+#product-name {
+  font-weight: 600;
+}
+
+#product-price {
+  font-size: 0.7em;
+}
+
+.select-container {
+  border: 1px solid rgb(209, 209, 209);
+  border-radius: 7px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.select-input {
+  width: 50px; 
+  font-size: 16px;
+  border-color: transparent; 
+  outline: 0;
+  display: inline-flex;
+  text-align: center;
+}
+
+.select-container button {
+  text-decoration:none;
+  padding: 0px 4px 0px 4px;
+}
+
+.select-container button:hover {
+  background-color: rgb(209, 209, 209);
+}
+
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type="number"] {
+  appearance: textfield;
+}
+
+.amountError {
+  color:red;
+  font-size: 0.45em;
+  text-wrap: nowrap;
+}
+
+#notification {
+  background-color: palevioletred;
+  color: #000;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border-radius: 7px;
+  display: none;
+  font-size: 0.6em;
+}
+
+.hidden {
+  display: none;
+}

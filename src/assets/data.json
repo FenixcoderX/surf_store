@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "name": "Surfboard",
+    "price": 700.00,
+    "imageUrl": "https://i.postimg.cc/dQ4TddgB/IMG-3951.jpg",
+    "description": "Ride the Wave of Adventure with Your Surfboard!"
+  },
+
+  {
+    "id": 2,
+    "name": "Boardshorts",
+    "price": 65.00,
+    "imageUrl": "https://i.postimg.cc/RFMwxzW1/IMG-3946.jpg",
+    "description": "Where Comfort Meets the Crest!"
+  },
+  {
+    "id": 3,
+    "name": "Earplugs",
+    "price": 25.00,
+    "imageUrl": "https://i.postimg.cc/CMJpgCQb/IMG-3945.jpg",
+    "description": "Hear the Waves, Protect Your Ears!"
+  },
+  {
+    "id": 4,
+    "name": "Wax",
+    "price": 9.00,
+    "imageUrl": "https://i.postimg.cc/Wzy944rc/IMG-3942.jpg",
+    "description": "Smooth Moves, Solid Grip!"
+  },
+  {
+    "id": 5,
+    "name": "Hoodie",
+    "price": 85.00,
+    "imageUrl": "https://i.postimg.cc/nzR2dL39/IMG-3941.jpg",
+    "description": "Stay Warm, Ride Strong!"
+  },
+  {
+    "id": 6,
+    "name": "Wetsuit",
+    "price": 200.00,
+    "imageUrl": "https://i.postimg.cc/wj8V4ZQ2/IMG-3940.jpg",
+    "description": "Surf in Style, Glide with Grace:  Where Comfort and Performance Converge!"
+  }
+]

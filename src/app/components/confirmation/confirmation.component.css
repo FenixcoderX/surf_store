@@ -1,0 +1,30 @@
+.confirmation-container {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+  width: 80vw;
+  /* border:3px solid red; */
+}
+
+.confirmation-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 300;
+  /* border:3px solid red; */
+}
+
+.confirmation-header {
+  color: palevioletred;
+  margin-bottom: 30px;
+}
+
+.confirmation-item {
+  text-align: center;
+  /* border:3px solid red; */
+}
+
+.confirmation-items button:hover {
+  background-color: #000;
+  color:palevioletred
+}
