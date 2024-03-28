@@ -1,29 +1,25 @@
-<div class = "detail-container"> 
-    <img src="{{ products[0].imageUrl }}" alt="{{ products[0].name }}">
-    
-    <div class ="detail-item">
-        
-        <p id="product-name">{{ products[0].name }}</p>
-        <p id="product-price">${{ products[0].price }}</p>
-        <p id="product-description">{{ products[0].description }}</p>
-        <div class="select-container">
-            <button type="button" class="btn btn-link" (click)="amountDown(products)">➖</button>
-            <input type="number" class="select-input" required min="1" #productAmount="ngModel" [(ngModel)]="products[0].amount"> 
-            <button type="button" class="btn btn-link" (click)="amountUp(products)">➕</button>
-        </div>
-        
-        <div class="amountError" *ngIf="productAmount.errors?.['min']; else elseBlock">
-            Please enter amount more than 0
-        </div>
+<div class="detail-container">
+  <img src="{{ products[0].imageUrl }}" alt="{{ products[0].name }}" />
 
-        <ng-template  #elseBlock> <br> </ng-template>
-
-        <br>
-        <button class="btn btn-dark" (click)="addToCart(products)">Add to Cart</button>
-        <div id="notification" class="hidden">Added to cart</div>
-        <br>
-        <br>
-        <a class="back-link" routerLink=""> Back to product list </a> 
+  <div class="detail-item">
+    <p id="product-name">{{ products[0].name }}</p>
+    <p id="product-price">${{ products[0].price }}</p>
+    <p id="product-description">{{ products[0].description }}</p>
+    <div class="select-container">
+      <button type="button" class="btn btn-link" (click)="amountDown(products)">➖</button>
+      <input type="number" class="select-input" required min="1" #productAmount="ngModel" [(ngModel)]="products[0].amount" />
+      <button type="button" class="btn btn-link" (click)="amountUp(products)">➕</button>
     </div>
 
+    <div class="amountError" *ngIf="productAmount.errors?.['min']; else elseBlock">Please enter amount more than 0</div>
+
+    <ng-template #elseBlock> <br /> </ng-template>
+
+    <br />
+    <button class="btn btn-dark" (click)="addToCart(products)">Add to Cart</button>
+    <div id="notification" class="hidden">Added to cart</div>
+    <br />
+    <br />
+    <a class="back-link" routerLink=""> Back to product list </a>
+  </div>
 </div>

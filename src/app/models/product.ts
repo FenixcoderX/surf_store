@@ -1,3 +1,4 @@
+ // represents a product object in the application with the following properties: 
 export class Product {
     id: number;
     name: string;

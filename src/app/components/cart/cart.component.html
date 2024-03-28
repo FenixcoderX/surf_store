@@ -1,89 +1,90 @@
 <div class="cart-container">
-    <div class = "cart-panel" *ngIf="cartProducts[0]">
-        <div class="cart-item" *ngFor="let cartProduct of cartProducts; index as i">
-            <img src="{{ cartProduct.imageUrl }}" alt="{{ cartProduct.name }}">
-            <div class = "cart-item-details">
-                <p id="product-name">{{ cartProduct.name }}</p>
-                <p id="product-price">${{ cartProduct.price }}</p>
-                <div>
-                    <span id="amount">Amount: <br/></span>
-                    <input type="number" class="number-input" (input)="updateAmount(cartProducts)" min="1" value="{{ cartProduct.amount }}" [(ngModel)]="cartProducts[i].amount">
-                    <br/>
-                    <br/>
-                    
-                    <button type="button" class="btn btn-light delete-button" (click)="removeProduct(cartProduct)">
-                        <svg fill="none" height="18" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            ><path d="m3 6h18m-16 0v14c0 1.1046.89543 2 2 2h10c1.1046 0 2-.8954 2-2v-14m-11 0v-2c0-1.10457.89543-2 2-2h4c1.1046 0 2 .89543 2 2v2"/><path d="m14 11v6"/><path
-                             d="m10 11v6"/></g></svg>
-                    </button>
-                    
-                </div>
-                
-            </div>
-            
+  <!-- If the cart is not empty, display the following HTML code in <div> container-->
+  <div class="cart-panel" *ngIf="cartProducts[0]">
+    <!-- Loop through the cartProducts array to display each product and its details in the cart -->
+    <div class="cart-item" *ngFor="let cartProduct of cartProducts; index as i">
+      <img src="{{ cartProduct.imageUrl }}" alt="{{ cartProduct.name }}" />
+      <div class="cart-item-details">
+        <p id="product-name">{{ cartProduct.name }}</p>
+        <p id="product-price">${{ cartProduct.price }}</p>
+        <div>
+          <span id="amount">Amount: <br /></span>
+          <!-- when the amount of a product is changed, the updateAmount() method is called
+        [(ngModel)] is used to bind the input value to the amount property of the cartProduct object -->
+          <input type="number" class="number-input" (input)="updateAmount(cartProducts)" min="1" [(ngModel)]="cartProducts[i].amount" />
+          <br />
+          <br />
+          <!-- Button to remove a product from the cart -->
+          <button type="button" class="btn btn-light delete-button" (click)="removeProduct(cartProduct)">
+            <svg fill="none" height="18" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="m3 6h18m-16 0v14c0 1.1046.89543 2 2 2h10c1.1046 0 2-.8954 2-2v-14m-11 0v-2c0-1.10457.89543-2 2-2h4c1.1046 0 2 .89543 2 2v2" />
+                <path d="m14 11v6" />
+                <path d="m10 11v6" />
+              </g>
+            </svg>
+          </button>
         </div>
-        <br/>
-        <h3><span id="total">Total: </span>${{total}}</h3>
+      </div>
     </div>
-    <div id="notification" class="hidden">Removed from cart</div>
+    <br />
+    <!-- Display the total price of all products in the cart -->
+    <h3><span id="total">Total: </span>${{ total }}</h3>
+  </div>
 
-    <div class = "empty-cart-message" *ngIf="!cartProducts[0]">
-      <h3>Your cart is empty</h3>
-    </div>  
+  <!-- When the "Remove Product" button is clicked a notification will be shown -->
+  <div id="notification" class="hidden">Removed from cart</div>
 
-    <form #form="ngForm">
-        <div class="form-floating">
-            <input class="form-control" type="text" id="floatingFullName" placeholder="Leave a comment here" name="fullname" ngModel required minlength="3" maxlength="30" placeholder="(minimum 3 characters)" [(ngModel)]="fullName" (ngModelChange)="validateFullName($event)" #nameFull="ngModel">
-            <label for="floatingFullName">Full name</label>
-            <div *ngIf="nameFull.invalid && nameFull.dirty" >
-                <div class="inputError" *ngIf="nameFull.errors?.['required']">
-                  Please provide a full name
-                </div>
-                <div class="inputError" *ngIf="nameFull.errors?.['minlength']">
-                    Full name must contain at least 3 characters
-                </div>
-            </div>
-            <div class="inputError" *ngIf="!fullNameValidate">
-                Please use valid name characters
-            </div>
-        </div>
-        
-        
+  <!-- If the cart is empty, display the following HTML code in <div> container-->
+  <div class="empty-cart-message" *ngIf="!cartProducts[0]">
+    <h3>Your cart is empty</h3>
+  </div>
 
-        <div class="form-floating">
-            <input class="form-control" type="text" id="floatingAddress" name="address" ngModel required minlength="6" maxlength="56" placeholder="(minimum 6 characters)" [(ngModel)]="address" #adr="ngModel">
-            <label for="floatingAddress">Address</label>
-        </div>
+  <!-- Form for the user to enter their details -->
+  <form #form="ngForm">
+    <!-- Full name field -->
+    <div class="form-floating">
+      <input class="form-control" type="text" id="floatingFullName" placeholder="Leave a comment here" name="fullname" ngModel required minlength="3" maxlength="30" placeholder="(minimum 3 characters)" [(ngModel)]="fullName" (ngModelChange)="validateFullName($event)" #nameFull="ngModel" />
+      <label for="floatingFullName">Full name</label>
 
-        <div *ngIf="adr.invalid && adr.dirty" >
-            <div class="inputError" *ngIf="adr.errors?.['required']">
-              Please provide an adsress
-            </div>
-            <div class="inputError" *ngIf="adr.errors?.['minlength']">
-                Address must contain at least 6 characters
-            </div>
-        </div>
+      <!-- if the input field is invalid and the user has interacted with it, display error messages -->
+      <!-- dirty is a boolean property that is true if the user has interacted with the input field -->
+      <!-- invalid is a boolean property that is true if the input field is invalid according to the validation rules, such as required, minlength, maxlength -->
+      <div *ngIf="nameFull.invalid && nameFull.dirty">
+        <div class="inputError" *ngIf="nameFull.errors?.['required']">Please provide a full name</div>
+        <div class="inputError" *ngIf="nameFull.errors?.['minlength']">Full name must contain at least 3 characters</div>
+      </div>
+      <!-- Display an error message if the user enters invalid characters in the full name field -->
+      <div class="inputError" *ngIf="!fullNameValidate">Please use valid name characters</div>
+    </div>
 
-        <div class="form-floating">
-            <input class="form-control" type="text" id="floatingCreaditCard" name="creditCardNumber" ngModel required minlength="16" maxlength="16" pattern="[0-9]+$" placeholder="(16-digit number)" [(ngModel)]="creditCardNumber" #cardNumber="ngModel">
-            <label for="floatingCreaditCard">Credit card number</label>
-        </div>  
-        
-        <div *ngIf="cardNumber.invalid && cardNumber.dirty" >
-            <div class="inputError" *ngIf="cardNumber.errors?.['required']">
-                Please provide a Credit Card number
-            </div>
-            <div class="inputError" *ngIf="cardNumber.errors?.['minlength']">
-                Credit Card number must contain 16 characters
-            </div>
-            <div class="inputError" *ngIf="cardNumber.errors?.['pattern']">
-                Credit Card number must contain only numbers
-            </div>
-        </div>
-        <p class="form-p">We never share your payment details with anyone else.</p>
-        <button class="btn btn-dark" type="button" value="Submit" [disabled]="form.invalid || total<=0" (click)="submitForm()" routerLink="confirmation">Pay now</button>
-    </form>
-    
+    <!-- Address field -->
+    <div class="form-floating">
+      <input class="form-control" type="text" id="floatingAddress" name="address" ngModel required minlength="6" maxlength="56" placeholder="(minimum 6 characters)" [(ngModel)]="address" #adr="ngModel" />
+      <label for="floatingAddress">Address</label>
+    </div>
+
+    <div *ngIf="adr.invalid && adr.dirty">
+      <div class="inputError" *ngIf="adr.errors?.['required']">Please provide an adsress</div>
+      <div class="inputError" *ngIf="adr.errors?.['minlength']">Address must contain at least 6 characters</div>
+    </div>
+
+    <!-- Credit card number field -->
+    <div class="form-floating">
+      <input class="form-control" type="text" id="floatingCreaditCard" name="creditCardNumber" ngModel required minlength="16" maxlength="16" pattern="[0-9]+$" placeholder="(16-digit number)" [(ngModel)]="creditCardNumber" #cardNumber="ngModel" />
+      <label for="floatingCreaditCard">Credit card number</label>
+    </div>
+
+    <div *ngIf="cardNumber.invalid && cardNumber.dirty">
+      <div class="inputError" *ngIf="cardNumber.errors?.['required']">Please provide a Credit Card number</div>
+      <div class="inputError" *ngIf="cardNumber.errors?.['minlength']">Credit Card number must contain 16 characters</div>
+      <div class="inputError" *ngIf="cardNumber.errors?.['pattern']">Credit Card number must contain only numbers</div>
+    </div>
+
+    <!-- Information -->
+    <p class="form-p">We never share your payment details with anyone else.</p>
+
+    <!-- Button to submit the form -->
+    <button class="btn btn-dark" type="button" value="Submit" [disabled]="form.invalid || total <= 0" (click)="submitForm()" routerLink="confirmation">Pay now</button>
+  </form>
 </div>
-
-

@@ -1,3 +1,5 @@
 <div class="product-index">
-<app-product-item class=" product-container " *ngFor="let product of products" [product]="product"></app-product-item>
+  <!-- Product item component is used to display each product -->
+  <!-- Uses ngFor directive to Loop through products array and pass product object to component-->
+  <app-product-item class="product-container" *ngFor="let product of products" [product]="product"></app-product-item>
 </div>

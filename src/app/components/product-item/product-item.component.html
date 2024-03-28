@@ -1,19 +1,23 @@
-
-<div class = "product-container"> 
-  <img routerLink="product/{{ product.id }}" class = "product-image" src="{{ product.imageUrl }}" alt="{{ product.name }}">
+<div class="product-container">
+  <img routerLink="product/{{ product.id }}" class="product-image" src="{{ product.imageUrl }}" alt="{{ product.name }}" />
   <p id="product-name">{{ product.name }}</p>
   <p id="product-price">${{ product.price }}</p>
+
   <div class="select-container">
     <button type="button" class="btn btn-link" (click)="amountDown(product)">➖</button>
-    <input  type="number" class="select-input" required min="1" #productAmount="ngModel" [(ngModel)]="product.amount">
+    <!-- #productAmount is used to reference the input field
+    required min="1" is used to make the input field mandatory not less than 1
+    [(ngModel)] is used to bind the value of the input field to the product amount-->
+    <input type="number" class="select-input" required min="1" #productAmount="ngModel" [(ngModel)]="product.amount" />
     <button type="button" class="btn btn-link" (click)="amountUp(product)">➕</button>
   </div>
-  <div class="amountError" *ngIf="productAmount.errors?.['min']; else elseBlock">
-    Please enter amount more than 0
-  </div>
-  <ng-template  #elseBlock> <br> </ng-template>
-  
 
+  <!-- If the amount of product is less than 1, an error message will be shown -->
+  <div class="amountError" *ngIf="productAmount.errors?.['min']; else elseBlock">Please enter amount more than 0</div>
+  <!-- If the amount of product is more than 0, a line break will be shown -->
+  <ng-template #elseBlock> <br /> </ng-template>
+
+  <!-- When the "Add to Cart" button is clicked, the product will be added to the cart and a notification will be shown -->
   <button class="btn btn-dark" (click)="addToCart(product)">Add to Cart</button>
   <div id="notification" class="hidden">Added to cart</div>
 </div>
