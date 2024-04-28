@@ -65,7 +65,7 @@
     </div>
 
     <div *ngIf="adr.invalid && adr.dirty">
-      <div class="inputError" *ngIf="adr.errors?.['required']">Please provide an adsress</div>
+      <div class="inputError" *ngIf="adr.errors?.['required']">Please provide an adress</div>
       <div class="inputError" *ngIf="adr.errors?.['minlength']">Address must contain at least 6 characters</div>
     </div>
 
@@ -82,7 +82,7 @@
     </div>
 
     <!-- Information -->
-    <p class="form-p">We never share your payment details with anyone else.</p>
+    <p class="form-p">We never share your payment details with anyone else</p>
 
     <!-- Button to submit the form -->
     <button class="btn btn-dark" type="button" value="Submit" [disabled]="form.invalid || total <= 0" (click)="submitForm()" routerLink="confirmation">Pay now</button>

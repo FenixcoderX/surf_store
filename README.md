@@ -1,8 +1,7 @@
 # Surf Store
+Angular | TypeScript | Jasmine
 
 A single-page e-commerce application where users can view a list of products, access detailed information about individual products, add products to their cart in desired quantities, view their cart contents, update or delete products from the cart, see the total amount, proceed to checkout, and view confirmation of a successful order.
-
-This application is built with Angular using TypeScript and Jasmine for tests. 
 
 ## Description
 
