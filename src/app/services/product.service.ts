@@ -10,7 +10,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root', 
 })
 
-// Class that defines the properties and methods of the service
 export class ProductService {
   // Constructor - method for creating and initializing an object instance of that class
   // Private properties can only be accessed and modified from the class itself

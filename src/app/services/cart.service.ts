@@ -8,7 +8,6 @@ import { Product } from '../models/product';
   providedIn: 'root',
 })
 
-// Class that defines the properties and methods of the service
 export class CartService {
   cartProducts: Product[] = []; // Array of products in the cart
   fullName: string = ''; // Full name of the user
@@ -20,9 +19,8 @@ export class CartService {
    * @returns {Product[]} An array of cart products objects in the cart
    */
   getCart() {
-    // If cart products exist in the local storage then save it to the cartProducts array.
     if (localStorage.getItem('cartProducts')) {
-      this.cartProducts = JSON.parse(localStorage.getItem('cartProducts')!); // JSON.parse - converts a JSON string to a JavaScript object. ! - non-null assertion operator - tells the compiler that the value is not null or undefined
+      this.cartProducts = JSON.parse(localStorage.getItem('cartProducts')!); // ! - non-null assertion operator - tells the compiler that the value is not null or undefined
     }
     return this.cartProducts;
   }
@@ -33,14 +31,12 @@ export class CartService {
    * @returns {Product[]} The updated array of products objects in the cart
    */
   addToCart(product: Product) {
-    // If cart products exist in the local storage then save it to the cartProducts array.
     if (localStorage.getItem('cartProducts')) {
       this.cartProducts = JSON.parse(localStorage.getItem('cartProducts')!);
     }
 
     // Checks the existing of an item in the cart and adds only the quantity if the item exists
     if (this.cartProducts.find((value) => value.id === product.id)) {
-      // console.log('Product Object found in cart, update quantity only');
       this.cartProducts.map((value) => {
         if (value.id === product.id) {
           value.amount += product.amount;
@@ -48,17 +44,11 @@ export class CartService {
       });
       // if no item found in the cart, add the item to the cart
     } else {
-      // console.log('Product Object not found in cart, add to the cart');
       this.cartProducts.push(product);
     }
 
-    // console.log ("this.cartProducts",this.cartProducts);
-    // console.log ("product",product);
-
-    // Save the updated cartProducts array to the local storage
     localStorage.setItem('cartProducts', JSON.stringify(this.cartProducts));
 
-    // Return the updated cartProducts array taken from the local storage
     return (this.cartProducts = JSON.parse(
       localStorage.getItem('cartProducts')!
     ));
@@ -69,15 +59,9 @@ export class CartService {
    * @returns {Product[]} An empty array representing the cleared cart
    */
   clearCart() {
-    //remove all cart products from the local storage
     localStorage.removeItem('cartProducts');
-
-    //clear the cartProducts array
     this.cartProducts = [];
-
-    // Save the empty cartProducts array to the local storage
     localStorage.setItem('cartProducts', JSON.stringify(this.cartProducts));
-
     return this.cartProducts;
   }
 
@@ -99,12 +83,11 @@ export class CartService {
     if (this.cartProducts.find((product) => product.amount < 0)) {
       totalPriceForAll = 0;
     }
-    // If the total price is less than 0, then set the total price to 0
+   
     if (totalPriceForAll < 0) {
       totalPriceForAll = 0;
     }
 
-    // Covnert the total price to a number with 2 decimal places and return it
     return Number(totalPriceForAll.toFixed(2));
   }
 
@@ -114,9 +97,8 @@ export class CartService {
    * @returns {Product[]} The updated array of products in the cart.
    */
   updateAmount(cartProducts: Product[]) {
-    // Save the updated cartProducts array to the local storage
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts));
-    // Return the updated cartProducts array taken from the local storage
+
     return (this.cartProducts = JSON.parse(
       localStorage.getItem('cartProducts')!
     ));
@@ -128,13 +110,14 @@ export class CartService {
    * @returns {Product[]} - The updated list of cart products after removing the specified product
    */
   removeProduct(cartProduct: Product) {
-    // Save to the cartProducts array the cart products from the local storage
+
     this.cartProducts = JSON.parse(localStorage.getItem('cartProducts')!);
+
     // Filter the cartProducts array to remove the product with the specified id
     this.cartProducts = this.cartProducts.filter(
       (value) => value.id !== cartProduct.id
     );
-    // Save the updated cartProducts array to the local storage
+
     localStorage.setItem('cartProducts', JSON.stringify(this.cartProducts));
 
     return this.cartProducts;

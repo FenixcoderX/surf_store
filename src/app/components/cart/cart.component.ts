@@ -4,14 +4,12 @@ import { Component } from '@angular/core';
 import { Product } from '../../models/product';
 import { CartService } from '../../services/cart.service';
 
-// Component decorator that specifies the selector (name of the component in HTML), template and style URLs for the component
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })
 
-// Class for the component that defines the properties and methods of the component
 export class CartComponent {
   
   // properties for the cart products and total price
@@ -27,7 +25,7 @@ export class CartComponent {
   // Constructor to inject the CartService. Private properties can only be accessed and modified from the class itself
   constructor(private cartService: CartService) {}
 
-  // Method to run when the component is initialized
+
   ngOnInit(): void {
     // Get the cart products and total price from the CartService
     this.cartProducts = this.cartService.getCart();

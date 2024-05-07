@@ -6,14 +6,12 @@ import { ProductService } from '../../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 
-// Component decorator that specifies the selector (name of the component in HTML), template and style URLs for the component
 @Component({
   selector: 'app-product-item-detail',
   templateUrl: './product-item-detail.component.html',
   styleUrls: ['./product-item-detail.component.css'],
 })
 
-// Class for the component that defines the properties and methods of the component
 export class ProductItemDetailComponent {
   //Initialize the product property
   id: number = 0;
@@ -29,7 +27,7 @@ export class ProductItemDetailComponent {
     route.params.subscribe((params) => (this.id = params['id'])); //https://metanit.com/web/angular2/7.4.php
   }
 
-  // ngOnInit method that is called after the component is initialized
+
   ngOnInit(): void {
     // Subscribe to the Observable returned by the getProducts method
     this.productService.getProducts().subscribe((res) => {
@@ -42,8 +40,6 @@ export class ProductItemDetailComponent {
 
       // Save final array of products in the products property
       this.products = res;
-      //console.log (this.id);
-      //console.log (Number(this.id));
 
       // Filter the products array to get the product with the id from the URL
       this.products = this.products.filter((p) => p.id === Number(this.id));
@@ -83,7 +79,6 @@ export class ProductItemDetailComponent {
       //  Add product to cart
     if (products[0].amount >= 1) {
       this.cartService.addToCart(products[0]);
-      //console.log(this.products[0]);
 
       // Show notification
       const notification = document.getElementById('notification');
